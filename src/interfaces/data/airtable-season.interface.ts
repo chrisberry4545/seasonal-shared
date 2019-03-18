@@ -1,8 +1,8 @@
 import {
-  BaseSeason
+  IBaseSeason
 } from './base-season.interface';
 
-export interface AirtableSeason extends BaseSeason {
+export interface IAirtableSeason extends IBaseSeason {
   food: string[];
   recipes: string[];
 }

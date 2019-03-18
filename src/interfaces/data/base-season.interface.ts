@@ -1,8 +1,8 @@
 import {
-  AirtableBaseRecord
+  IAirtableBaseRecord
 } from '../airtable';
 
-export interface BaseSeason extends AirtableBaseRecord {
+export interface IBaseSeason extends IAirtableBaseRecord {
   name: string;
   seasonIndex: number;
 }

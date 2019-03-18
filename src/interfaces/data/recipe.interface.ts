@@ -1,8 +1,8 @@
 import {
-  AirtableBaseRecord
+  IAirtableBaseRecord
 } from '../airtable';
 
-export interface Recipe extends AirtableBaseRecord {
+export interface IRecipe extends IAirtableBaseRecord {
   name: string;
   linkUrl: string;
   imageUrlSmall: string;

@@ -1,3 +1,3 @@
-export interface AirtableBaseRecord {
+export interface IAirtableBaseRecord {
   id: string;
 }

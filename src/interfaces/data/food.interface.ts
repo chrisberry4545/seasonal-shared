@@ -1,8 +1,8 @@
 import {
-  AirtableBaseRecord
+  IAirtableBaseRecord
 } from '../airtable';
 
-export interface Food extends AirtableBaseRecord {
+export interface IFood extends IAirtableBaseRecord {
   name: string;
   imageUrlSmall: string;
 }

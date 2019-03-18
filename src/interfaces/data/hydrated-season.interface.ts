@@ -1,17 +1,16 @@
 import {
-  BaseSeason
+  IBaseSeason
 } from './base-season.interface';
 
 import {
-  Food
+  IFood
 } from './food.interface';
 
 import {
-  Recipe
+  IRecipe
 } from './recipe.interface';
 
-export interface HydratedSeason extends BaseSeason {
-  food?: Food[];
-  recipes?: Recipe[];
+export interface IHydratedSeason extends IBaseSeason {
+  food?: IFood[];
+  recipes?: IRecipe[];
 }
-
