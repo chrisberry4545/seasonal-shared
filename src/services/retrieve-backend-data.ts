@@ -1,6 +1,7 @@
 import {
   FOOD_DETAILS_DATA_URL,
-  SEASON_DATA_URL
+  SEASON_DATA_URL,
+  SEASON_WITH_FOOD_DATA_URL
 } from '././../config';
 import { IBaseSeason, IHydratedSeason, IHydratedFood } from '../interfaces';
 
@@ -23,4 +24,8 @@ export const getFoodDetailsData = (
 ): Promise<IHydratedFood> => {
   return fetch(`${FOOD_DETAILS_DATA_URL}/${foodId}`)
     .then((resp) => resp.json());
+};
+
+export const getAllSeasonDataWithFood = (): Promise<IHydratedSeason[]> => {
+  return fetch(SEASON_WITH_FOOD_DATA_URL).then((resp) => resp.json());
 };

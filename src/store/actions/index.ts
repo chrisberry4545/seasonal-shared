@@ -1,5 +1,7 @@
 export * from './all-basic-season-data.actions';
 
+export * from './all-season-with-food-data.actions';
+
 export * from './current-food-details-data.actions';
 
 export * from './current-season-data.actions';

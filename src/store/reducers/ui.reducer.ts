@@ -5,7 +5,8 @@ import {
   SEARCH_BAR_CHANGED,
   ISearchBarChanged,
   SHOW_SEARCH_BAR,
-  HIDE_SEARCH_BAR
+  HIDE_SEARCH_BAR,
+  GO_TO_ALL_SEASONS_VIEW
 } from '../actions';
 import { IUiState } from '../../interfaces';
 import { Action } from 'redux';
@@ -20,6 +21,7 @@ export function uiReducer(
   action: Action
 ): IUiState {
   switch (action.type) {
+    case GO_TO_ALL_SEASONS_VIEW:
     case SELECT_SEASON:
     case CLOSE_MENU:
       return {

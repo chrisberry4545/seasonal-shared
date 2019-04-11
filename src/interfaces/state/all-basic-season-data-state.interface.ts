@@ -1,6 +1,6 @@
 import { IBaseSeason } from '../../interfaces';
 
-export interface ISeasonDataState {
+export interface IAllBasicSeasonDataState {
   isLoading: boolean;
   data?: IBaseSeason[];
 }

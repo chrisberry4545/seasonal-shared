@@ -27,6 +27,13 @@ export function selectSeason(
   };
 }
 
+export const GO_TO_ALL_SEASONS_VIEW = 'GO_TO_ALL_SEASONS_VIEW';
+export function goToAllSeasonsView(): Action {
+  return {
+    type: GO_TO_ALL_SEASONS_VIEW
+  };
+}
+
 export const FOOD_DETAILS_SELECT_SEASON = 'FOOD_DETAILS_SELECT_SEASON';
 export function foodDetailsSelectSeason(
   seasonIndex: number

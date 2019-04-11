@@ -6,7 +6,7 @@ import {
 import {
   selectIsBasicSeasonDataLoading,
   selectAllBasicSeasonData
-} from '../all-season-data.selectors';
+} from '../all-basic-season-data.selectors';
 import { ISelectableItem } from '../../../interfaces';
 
 export const selectIsFoodDataOrBasicSeasonsLoading = createSelector(

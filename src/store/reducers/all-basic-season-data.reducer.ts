@@ -3,10 +3,10 @@ import {
   SET_ALL_BASIC_SEASON_DATA_SUCCESS,
   ISetAllBasicSeasonDataSuccess
 } from '../actions';
-import { ISeasonDataState } from '../../interfaces';
+import { IAllBasicSeasonDataState } from '../../interfaces';
 import { Action } from 'redux';
 
-const getDefaultState = (): ISeasonDataState => ({
+const getDefaultState = (): IAllBasicSeasonDataState => ({
   data: undefined,
   isLoading: true
 });
@@ -14,7 +14,7 @@ const getDefaultState = (): ISeasonDataState => ({
 export function allBasicSeasonDataReducer(
   state = getDefaultState(),
   action: Action
-): ISeasonDataState {
+): IAllBasicSeasonDataState {
   switch (action.type) {
     case SET_ALL_BASIC_SEASON_DATA_START:
       return {

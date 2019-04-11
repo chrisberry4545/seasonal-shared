@@ -11,6 +11,10 @@ import {
 } from './all-basic-season-data.epics';
 
 import {
+  getAllSeasonsWithFood$
+} from './all-seasons-with-food-data.epic';
+
+import {
   getCurrentFoodDetailsDataEpic$
 } from './current-food-details-data.epics';
 
@@ -20,12 +24,7 @@ export const rootEpics = [
   getCurrentSeasonDataEpic$,
   getAllBasicSeasonDataStartEpic$,
   getAllBasicSeasonDataEpic$,
-  getCurrentFoodDetailsDataEpic$,
-  initAppEpic$,
-  getCurrentSeasonDataStartEpic$,
-  getCurrentSeasonDataEpic$,
-  getAllBasicSeasonDataStartEpic$,
-  getAllBasicSeasonDataEpic$,
+  getAllSeasonsWithFood$,
   getCurrentFoodDetailsDataEpic$
 ];
 

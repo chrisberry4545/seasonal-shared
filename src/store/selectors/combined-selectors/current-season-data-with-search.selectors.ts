@@ -3,13 +3,7 @@ import { createSelector } from 'reselect';
 import { selectCurrentSearchTerm } from '../ui.selectors';
 import { selectCurrentSeasonFood, selectCurrentSeasonRecipes } from '../current-season-data.selectors';
 import { IFood, IRecipe } from '../../../interfaces';
-
-const getDataThatContainsSearchTerm = <T extends { name: string }>(
-  searchTerm: string | undefined,
-  data: T[] | undefined
-) => data && data.filter(({ name }) => (
-  !searchTerm || name.toLowerCase().includes(searchTerm)
-));
+import { getDataThatContainsSearchTerm } from '../../../helpers';
 
 export const selectVisibleFoodData = createSelector(
   selectCurrentSearchTerm,

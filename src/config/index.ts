@@ -6,3 +6,6 @@ export const SEASON_DATA_URL =
 
 export const FOOD_DETAILS_DATA_URL =
   process.env.FOOD_DETAILS_DATA_URL || `${BACKEND_URL}/food-data`;
+
+export const SEASON_WITH_FOOD_DATA_URL =
+  process.env.SEASON_WITH_FOOD_DATA_URL || `${BACKEND_URL}/season-with-food`;
