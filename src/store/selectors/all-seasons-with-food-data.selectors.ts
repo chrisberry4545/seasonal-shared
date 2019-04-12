@@ -17,3 +17,20 @@ export const selectAllSeasonsWithFoodData = createSelector(
     allSeasonsWithFoodData.data
   )
 );
+
+export const selectNumberOfAllSeasonsInView = createSelector(
+  selectAllSeasonsWithFoodDataState,
+  (allSeasonsWithFoodData): number => (
+    allSeasonsWithFoodData.numberOfSeasonsInView
+  )
+);
+
+export const selectHasMoreSeasonsInAllSeasonsView = createSelector(
+  selectNumberOfAllSeasonsInView,
+  selectAllSeasonsWithFoodData,
+  (numberOfAllSeasons, allSeasons): boolean => (
+    allSeasons
+      ? numberOfAllSeasons < allSeasons.length
+      : false
+  )
+);
