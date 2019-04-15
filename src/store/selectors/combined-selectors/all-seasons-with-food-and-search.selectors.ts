@@ -1,6 +1,6 @@
 
 import { createSelector } from 'reselect';
-import { IHydratedSeason } from '../../../interfaces';
+import { IHydratedSeason, IAllSeasonsGraphData } from '../../../interfaces';
 import {
   selectAllSeasonsWithFoodData,
   selectNumberOfAllSeasonsInView
@@ -8,18 +8,38 @@ import {
 import { getDataThatContainsSearchTerm } from '../../../helpers';
 import { selectCurrentSearchTerm } from '../ui.selectors';
 
-export const selectAllSeasonsVisibleFoodData = createSelector(
+export const selectAllSeasonsWithFoodAndSearchAppliedData = createSelector(
   selectAllSeasonsWithFoodData,
   selectCurrentSearchTerm,
-  selectNumberOfAllSeasonsInView,
-  (
-    seasons,
-    searchTerm,
-    numberOfSeasonsInView
-  ): IHydratedSeason[] | undefined => (
-    seasons && seasons.slice(0, numberOfSeasonsInView).map((season) => ({
+  (seasons, searchTerm): IHydratedSeason[] | undefined => (
+    seasons && seasons.map((season) => ({
       ...season,
       food: getDataThatContainsSearchTerm(searchTerm, season.food)
-    })).filter(({ food }) => food && food.length > 0)
+    }))
+  )
+);
+
+export const selectAllSeasonsVisibleFoodData = createSelector(
+  selectAllSeasonsWithFoodAndSearchAppliedData,
+  selectNumberOfAllSeasonsInView,
+  (
+    seasonsWithSearchApplied,
+    numberOfSeasonsInView
+  ): IHydratedSeason[] | undefined => (
+    seasonsWithSearchApplied &&
+      seasonsWithSearchApplied.slice(0, numberOfSeasonsInView)
+        .filter(({ food }) => food && food.length > 0)
+    )
+);
+
+export const selectFoodInSeasonGraphData = createSelector(
+  selectAllSeasonsWithFoodAndSearchAppliedData,
+  (allSeasonData): IAllSeasonsGraphData[] | undefined => (
+    allSeasonData && allSeasonData.map(({ name, food }) => ({
+      'Number of food items in season': food
+        ? food.length
+        : 0,
+      'name': name
+    }))
   )
 );
