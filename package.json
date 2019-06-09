@@ -27,7 +27,7 @@
   ],
   "homepage": "https://github.com/chrisberry4545/seasonal-shared#readme",
   "dependencies": {
-    "@types/node": "^11.13.0",
+    "@types/node": "^11.13.13",
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
     "reselect": "^4.0.0",
