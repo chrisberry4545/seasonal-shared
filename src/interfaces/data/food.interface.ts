@@ -5,4 +5,5 @@ import {
 export interface IFood extends IAirtableBaseRecord {
   name: string;
   imageUrlSmall: string;
+  description?: string;
 }
