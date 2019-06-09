@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import {
-  IState, ICurrentFoodDetailsDataState
+  IState, ICurrentFoodDetailsDataState, IRecipe
 } from '../../interfaces';
 import {
   IHydratedFood,
@@ -37,4 +37,13 @@ export const selectCurrentFoodDetailsSeasons = createSelector(
   selectCurrentFoodDetails,
   (currentFoodDetails): IBaseSeason[] | undefined => currentFoodDetails &&
     currentFoodDetails.seasons
+);
+
+export const selectCurrentFoodDetailsRecipes = createSelector(
+  selectCurrentFoodDetails,
+  (currentFoodDetails): IRecipe[] | undefined => currentFoodDetails &&
+    [
+      ...(currentFoodDetails.primaryFoodInRecipe || []),
+      ...(currentFoodDetails.secondaryFoodInRecipe || [])
+    ]
 );

@@ -96,3 +96,13 @@ export function recipeItemClicked(
     type: RECIPE_ITEM_CLICKED
   };
 }
+
+export const FOOD_DETAILS_SELECT_RECIPE = 'FOOD_DETAILS_SELECT_RECIPE';
+export function foodDetailsSelectRecipe(
+  recipeItemId: string
+): IRecipeItemClicked {
+  return {
+    recipeItemId,
+    type: FOOD_DETAILS_SELECT_RECIPE
+  };
+}
