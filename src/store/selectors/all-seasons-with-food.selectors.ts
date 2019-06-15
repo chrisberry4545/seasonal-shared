@@ -2,24 +2,29 @@
 import { createSelector } from 'reselect';
 import { IState, IHydratedSeason } from '../../interfaces';
 
-const selectAllSeasonsWithFoodDataState = (
+const selectAllSeasonsWithFoodState = (
   state: IState
 ) => state.allSeasonsWithFoodData;
 
-export const selectIsAllSeasonsWithFoodDataLoading = createSelector(
-  selectAllSeasonsWithFoodDataState,
-  (allSeasonsWithFoodData): boolean => allSeasonsWithFoodData.isLoading
+export const selectIsAllSeasonsFoodLoading = createSelector(
+  selectAllSeasonsWithFoodState,
+  (allSeasonsWithFoodData): boolean => allSeasonsWithFoodData.isFoodLoading
 );
 
-export const selectAllSeasonsWithFoodData = createSelector(
-  selectAllSeasonsWithFoodDataState,
+export const selectIsAllSeasonsRecipesLoading = createSelector(
+  selectAllSeasonsWithFoodState,
+  (allSeasonsWithFoodData): boolean => allSeasonsWithFoodData.isRecipesLoading
+);
+
+export const selectAllSeasons = createSelector(
+  selectAllSeasonsWithFoodState,
   (allSeasonsWithFoodData): IHydratedSeason[] | undefined => (
     allSeasonsWithFoodData.data
   )
 );
 
 export const selectNumberOfAllSeasonsInView = createSelector(
-  selectAllSeasonsWithFoodDataState,
+  selectAllSeasonsWithFoodState,
   (allSeasonsWithFoodData): number => (
     allSeasonsWithFoodData.numberOfSeasonsInView
   )
@@ -27,7 +32,7 @@ export const selectNumberOfAllSeasonsInView = createSelector(
 
 export const selectHasMoreSeasonsInAllSeasonsView = createSelector(
   selectNumberOfAllSeasonsInView,
-  selectAllSeasonsWithFoodData,
+  selectAllSeasons,
   (numberOfAllSeasons, allSeasons): boolean => (
     allSeasons
       ? numberOfAllSeasons < allSeasons.length

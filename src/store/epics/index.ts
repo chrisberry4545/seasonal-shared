@@ -1,31 +1,43 @@
 import {
-  getCurrentSeasonDataStartEpic$,
-  getCurrentSeasonDataEpic$
-} from './current-season-data.epics';
+  getCurrentSeasonWithFoodStartEpic$,
+  getCurrentSeasonWithFoodEpic$
+} from './current-season-with-food.epics';
+
+import {
+  getCurrentSeasonWithRecipesStartEpic$,
+  getCurrentSeasonWithRecipesEpic$
+} from './current-season-with-recipes.epics';
 
 import { initAppEpic$ } from './init.epics';
 
 import {
-  getAllBasicSeasonDataStartEpic$,
-  getAllBasicSeasonDataEpic$
-} from './all-basic-season-data.epics';
+  getAllBasicSeasonsStartEpic$,
+  getAllBasicSeasonsEpic$
+} from './all-basic-season.epics';
 
 import {
   getAllSeasonsWithFood$
-} from './all-seasons-with-food-data.epic';
+} from './all-seasons-with-food.epic';
 
 import {
-  getCurrentFoodDetailsDataEpic$
-} from './current-food-details-data.epics';
+  getAllSeasonsWithRecipes$
+} from './all-seasons-with-recipes.epic';
+
+import {
+  getCurrentFoodDetailsEpic$
+} from './current-food-details.epics';
 
 export const rootEpics = [
   initAppEpic$,
-  getCurrentSeasonDataStartEpic$,
-  getCurrentSeasonDataEpic$,
-  getAllBasicSeasonDataStartEpic$,
-  getAllBasicSeasonDataEpic$,
+  getCurrentSeasonWithFoodStartEpic$,
+  getCurrentSeasonWithFoodEpic$,
+  getCurrentSeasonWithRecipesStartEpic$,
+  getCurrentSeasonWithRecipesEpic$,
+  getAllBasicSeasonsStartEpic$,
+  getAllBasicSeasonsEpic$,
   getAllSeasonsWithFood$,
-  getCurrentFoodDetailsDataEpic$
+  getAllSeasonsWithRecipes$,
+  getCurrentFoodDetailsEpic$
 ];
 
 export * from './seasonal-epic.type';

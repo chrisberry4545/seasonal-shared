@@ -1,6 +1,6 @@
 import {
-  SET_ALL_BASIC_SEASON_DATA_START,
-  SET_ALL_BASIC_SEASON_DATA_SUCCESS,
+  SET_ALL_BASIC_SEASONS_START,
+  SET_ALL_BASIC_SEASONS_SUCCESS,
   ISetAllBasicSeasonDataSuccess
 } from '../actions';
 import { IAllBasicSeasonDataState } from '../../interfaces';
@@ -11,17 +11,17 @@ const getDefaultState = (): IAllBasicSeasonDataState => ({
   isLoading: true
 });
 
-export function allBasicSeasonDataReducer(
+export function allBasicSeasonReducer(
   state = getDefaultState(),
   action: Action
 ): IAllBasicSeasonDataState {
   switch (action.type) {
-    case SET_ALL_BASIC_SEASON_DATA_START:
+    case SET_ALL_BASIC_SEASONS_START:
       return {
         ...state,
         isLoading: true
       };
-    case SET_ALL_BASIC_SEASON_DATA_SUCCESS:
+    case SET_ALL_BASIC_SEASONS_SUCCESS:
       return {
         ...state,
         data: (action as ISetAllBasicSeasonDataSuccess).seasonData,

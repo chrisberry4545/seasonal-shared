@@ -4,6 +4,7 @@ import {
 
 export interface ICurrentSeasonDataState {
   currentSeasonIndex: number;
-  isLoading: boolean;
+  isFoodLoading: boolean;
+  isRecipesLoading: boolean;
   data?: IHydratedSeason;
 }

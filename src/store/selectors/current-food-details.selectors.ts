@@ -7,17 +7,17 @@ import {
   IBaseSeason
 } from '../../interfaces';
 
-const selectCurrentFoodDetailsDataState = (
+const selectCurrentFoodDetailsState = (
   state: IState
 ): ICurrentFoodDetailsDataState => state.currentFoodDetailsData;
 
 export const selectIsCurrentFoodDetailsLoading = createSelector(
-  selectCurrentFoodDetailsDataState,
+  selectCurrentFoodDetailsState,
   (currentFoodDetails): boolean => currentFoodDetails.isLoading
 );
 
 export const selectCurrentFoodDetails = createSelector(
-  selectCurrentFoodDetailsDataState,
+  selectCurrentFoodDetailsState,
   (currentFoodDetails): IHydratedFood | undefined => currentFoodDetails.data
 );
 

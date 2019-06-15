@@ -1,21 +1,21 @@
 import {
-  currentFoodDetailsDataReducer
-} from './current-food-details-data.reducer';
+  currentFoodDetailsReducer
+} from './current-food-details.reducer';
 
-import { currentSeasonDataReducer } from './current-season-data.reducer';
+import { currentSeasonWithFoodReducer } from './current-season.reducer';
 
-import { allBasicSeasonDataReducer } from './all-basic-season-data.reducer';
+import { allBasicSeasonReducer } from './all-basic-seasons.reducer';
 
 import {
-  allSeasonsWithFoodDataReducer
-} from './all-seasons-with-food-data.reducer';
+  allSeasonsReducer
+} from './all-seasons.reducer';
 
 import { uiReducer } from './ui.reducer';
 
 export const allReducers = {
-  allBasicSeasonData: allBasicSeasonDataReducer,
-  allSeasonsWithFoodData: allSeasonsWithFoodDataReducer,
-  currentFoodDetailsData: currentFoodDetailsDataReducer,
-  currentSeasonData: currentSeasonDataReducer,
+  allBasicSeasonData: allBasicSeasonReducer,
+  allSeasonsWithFoodData: allSeasonsReducer,
+  currentFoodDetailsData: currentFoodDetailsReducer,
+  currentSeasonData: currentSeasonWithFoodReducer,
   ui: uiReducer
 };

@@ -1,10 +1,10 @@
-export * from './all-basic-season-data.selectors';
+export * from './all-basic-season.selectors';
 
-export * from './all-seasons-with-food-data.selectors';
+export * from './all-seasons-with-food.selectors';
 
-export * from './current-food-details-data.selectors';
+export * from './current-food-details.selectors';
 
-export * from './current-season-data.selectors';
+export * from './current-season.selectors';
 
 export * from './ui.selectors';
 

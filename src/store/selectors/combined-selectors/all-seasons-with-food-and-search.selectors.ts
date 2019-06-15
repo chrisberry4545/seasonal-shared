@@ -1,15 +1,14 @@
-
 import { createSelector } from 'reselect';
 import { IHydratedSeason, IAllSeasonsGraphData } from '../../../interfaces';
 import {
-  selectAllSeasonsWithFoodData,
+  selectAllSeasons,
   selectNumberOfAllSeasonsInView
-} from '../all-seasons-with-food-data.selectors';
+} from '../all-seasons-with-food.selectors';
 import { getDataThatContainsSearchTerm } from '../../../helpers';
 import { selectCurrentSearchTerm } from '../ui.selectors';
 
 export const selectAllSeasonsWithFoodAndSearchAppliedData = createSelector(
-  selectAllSeasonsWithFoodData,
+  selectAllSeasons,
   selectCurrentSearchTerm,
   (seasons, searchTerm): IHydratedSeason[] | undefined => (
     seasons && seasons.map((season) => ({

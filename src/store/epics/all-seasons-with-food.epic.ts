@@ -1,12 +1,12 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 
 import {
-  getAllSeasonDataWithFood
+  getAllSeasonsWithFood
 } from '../../services';
 
 import {
-  SET_ALL_SEASONS_WITH_FOOD_DATA_START,
-  setAllSeasonsWithFoodDataSuccess
+  SET_ALL_SEASONS_WITH_FOOD_START,
+  setAllSeasonsWithFoodSuccess
 } from '../actions';
 
 import {
@@ -21,8 +21,8 @@ export const getAllSeasonsWithFood$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(SET_ALL_SEASONS_WITH_FOOD_DATA_START),
-    switchMap(() => getAllSeasonDataWithFood()),
-    map((seasonData) => setAllSeasonsWithFoodDataSuccess(seasonData))
+    ofType(SET_ALL_SEASONS_WITH_FOOD_START),
+    switchMap(() => getAllSeasonsWithFood()),
+    map((seasonData) => setAllSeasonsWithFoodSuccess(seasonData))
   )
 );

@@ -1,7 +1,7 @@
 
 import { createSelector } from 'reselect';
 import { selectCurrentSearchTerm } from '../ui.selectors';
-import { selectCurrentSeasonFood, selectCurrentSeasonRecipes } from '../current-season-data.selectors';
+import { selectCurrentSeasonFood, selectCurrentSeasonRecipes } from '../current-season.selectors';
 import { IFood, IRecipe } from '../../../interfaces';
 import { getDataThatContainsSearchTerm } from '../../../helpers';
 

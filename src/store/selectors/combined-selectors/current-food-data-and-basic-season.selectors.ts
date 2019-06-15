@@ -2,16 +2,16 @@ import { createSelector } from 'reselect';
 import {
   selectIsCurrentFoodDetailsLoading,
   selectCurrentFoodDetailsSeasons
-} from '../current-food-details-data.selectors';
+} from '../current-food-details.selectors';
 import {
-  selectIsBasicSeasonDataLoading,
-  selectAllBasicSeasonData
-} from '../all-basic-season-data.selectors';
+  selectIsBasicSeasonsLoading,
+  selectAllBasicSeasons
+} from '../all-basic-season.selectors';
 import { ISelectableItem } from '../../../interfaces';
 
 export const selectIsFoodDataOrBasicSeasonsLoading = createSelector(
   selectIsCurrentFoodDetailsLoading,
-  selectIsBasicSeasonDataLoading,
+  selectIsBasicSeasonsLoading,
   (isCurrentFoodDetailsLoading, isBasicSeasonDataLoading): boolean => (
     isCurrentFoodDetailsLoading || isBasicSeasonDataLoading
   )
@@ -19,7 +19,7 @@ export const selectIsFoodDataOrBasicSeasonsLoading = createSelector(
 
 export const selectSeasonsSelectedForFood = createSelector(
   selectCurrentFoodDetailsSeasons,
-  selectAllBasicSeasonData,
+  selectAllBasicSeasons,
   (foodDetailsSeasons, basicSeasons): ISelectableItem[] | undefined => (
     foodDetailsSeasons && basicSeasons &&
       basicSeasons.map(({ id, name }) => ({

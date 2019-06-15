@@ -1,14 +1,14 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 
 import {
-  getAllSeasonData
+  getAllSeasons
 } from '../../services';
 
 import {
   INIT_APP,
-  SET_ALL_BASIC_SEASON_DATA_START,
-  setAllBasicSeasonDataStart,
-  setAllBasicSeasonDataSuccess
+  SET_ALL_BASIC_SEASONS_START,
+  setAllSeasonsStart,
+  setAllBasicSeasonsSuccess
 } from '../actions';
 
 import {
@@ -20,21 +20,21 @@ import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 
-export const getAllBasicSeasonDataStartEpic$: SharedSeasonalEpic = (
+export const getAllBasicSeasonsStartEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
     ofType(INIT_APP),
-    mapTo(setAllBasicSeasonDataStart())
+    mapTo(setAllSeasonsStart())
   )
 );
 
-export const getAllBasicSeasonDataEpic$: SharedSeasonalEpic = (
+export const getAllBasicSeasonsEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(SET_ALL_BASIC_SEASON_DATA_START),
-    switchMap(() => getAllSeasonData()),
-    map((seasonData) => setAllBasicSeasonDataSuccess(seasonData))
+    ofType(SET_ALL_BASIC_SEASONS_START),
+    switchMap(() => getAllSeasons()),
+    map((seasonData) => setAllBasicSeasonsSuccess(seasonData))
   )
 );

@@ -5,9 +5,9 @@ import {
 } from '../../services';
 
 import {
-  setCurrentFoodDetailsDataSuccess,
+  setCurrentFoodDetailsSuccess,
   IFoodItemClicked,
-  SET_CURRENT_FOOD_DETAILS_DATA_START
+  SET_CURRENT_FOOD_DETAILS_START
 } from '../actions';
 
 import {
@@ -18,14 +18,14 @@ import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 
-export const getCurrentFoodDetailsDataEpic$: SharedSeasonalEpic = (
+export const getCurrentFoodDetailsEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(SET_CURRENT_FOOD_DETAILS_DATA_START),
+    ofType(SET_CURRENT_FOOD_DETAILS_START),
     switchMap((action) => (
       getFoodDetailsData((action as IFoodItemClicked).foodItemId)
     )),
-    map((currentFoodData) => setCurrentFoodDetailsDataSuccess(currentFoodData))
+    map((currentFoodData) => setCurrentFoodDetailsSuccess(currentFoodData))
   )
 );

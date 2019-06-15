@@ -7,12 +7,12 @@ const selectAllBasicSeasonDataState = (
   state: IState
 ) => state.allBasicSeasonData;
 
-export const selectIsBasicSeasonDataLoading = createSelector(
+export const selectIsBasicSeasonsLoading = createSelector(
   selectAllBasicSeasonDataState,
   (allBasicSeasonData): boolean => allBasicSeasonData.isLoading
 );
 
-export const selectAllBasicSeasonData = createSelector(
+export const selectAllBasicSeasons = createSelector(
   selectAllBasicSeasonDataState,
   (allBasicSeasonData): IBaseSeason[] | undefined => allBasicSeasonData.data
 );

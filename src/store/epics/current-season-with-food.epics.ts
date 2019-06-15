@@ -1,15 +1,15 @@
 import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 
 import {
-  getSeasonDataBySeasonIndex
+  getSeasonWithFood
 } from '../../services';
 
 import {
-  SET_CURRENT_SEASON_DATA_START,
-  setCurrentSeasonDataSuccess,
+  SET_CURRENT_SEASON_WITH_FOOD_START,
+  setCurrentSeasonWithFoodSuccess,
   INIT_APP,
   FOOD_DETAILS_SELECT_SEASON,
-  setCurrentSeasonDataStart,
+  setCurrentSeasonWithFoodStart,
   SELECT_SEASON
 } from '../actions';
 
@@ -25,7 +25,7 @@ import { SharedSeasonalEpic } from './seasonal-epic.type';
 import { IState } from '../../interfaces';
 import { selectCurrentSeasonIndex } from '../selectors';
 
-export const getCurrentSeasonDataStartEpic$: SharedSeasonalEpic = (
+export const getCurrentSeasonWithFoodStartEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
@@ -34,19 +34,19 @@ export const getCurrentSeasonDataStartEpic$: SharedSeasonalEpic = (
       INIT_APP,
       FOOD_DETAILS_SELECT_SEASON
     ),
-    mapTo(setCurrentSeasonDataStart())
+    mapTo(setCurrentSeasonWithFoodStart())
   )
 );
 
-export const getCurrentSeasonDataEpic$: SharedSeasonalEpic = (
+export const getCurrentSeasonWithFoodEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>,
   state$: StateObservable<IState>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(SET_CURRENT_SEASON_DATA_START),
+    ofType(SET_CURRENT_SEASON_WITH_FOOD_START),
     withLatestFrom(state$),
     map(([, state]) => selectCurrentSeasonIndex(state)),
-    switchMap((seasonIndex) => getSeasonDataBySeasonIndex(seasonIndex)),
-    map((foodData) => setCurrentSeasonDataSuccess(foodData))
+    switchMap((seasonIndex) => getSeasonWithFood(seasonIndex)),
+    map((foodData) => setCurrentSeasonWithFoodSuccess(foodData))
   )
 );

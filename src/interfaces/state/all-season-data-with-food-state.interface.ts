@@ -1,7 +1,8 @@
 import { IHydratedSeason } from '../../interfaces';
 
 export interface IAllSeasonDataWithFoodState {
-  isLoading: boolean;
+  isFoodLoading: boolean;
+  isRecipesLoading: boolean;
   data?: IHydratedSeason[];
   numberOfSeasonsInView: number;
 }

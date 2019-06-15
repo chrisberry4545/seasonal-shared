@@ -8,15 +8,20 @@ import {
   IRecipe
 } from '../../interfaces';
 
-const selectCurrentSeasonDataState = (state: IState) => state.currentSeasonData;
+const selectCurrentSeasonWithFoodState = (state: IState) => state.currentSeasonData;
 
-export const selectIsCurrentSeasonLoading = createSelector(
-  selectCurrentSeasonDataState,
-  (currentSeasonData): boolean => currentSeasonData.isLoading
+export const selectIsCurrentSeasonFoodLoading = createSelector(
+  selectCurrentSeasonWithFoodState,
+  (currentSeasonData): boolean => currentSeasonData.isFoodLoading
+);
+
+export const selectIsCurrentSeasonRecipesLoading = createSelector(
+  selectCurrentSeasonWithFoodState,
+  (currentSeasonData): boolean => currentSeasonData.isRecipesLoading
 );
 
 export const selectCurrentSeason = createSelector(
-  selectCurrentSeasonDataState,
+  selectCurrentSeasonWithFoodState,
   (currentSeasonData): IHydratedSeason | undefined => currentSeasonData.data
 );
 
@@ -41,7 +46,7 @@ export const selectCurrentSeasonRecipesById = (recipeId: string) => (
 );
 
 export const selectCurrentSeasonIndex = createSelector(
-  selectCurrentSeasonDataState,
+  selectCurrentSeasonWithFoodState,
   (currentSeasonData) => currentSeasonData.currentSeasonIndex
 );
 
