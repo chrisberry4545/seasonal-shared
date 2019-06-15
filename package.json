@@ -27,7 +27,6 @@
   ],
   "homepage": "https://github.com/chrisberry4545/seasonal-shared#readme",
   "dependencies": {
-    "@types/node": "^11.13.13",
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
     "reselect": "^4.0.0",
@@ -35,6 +34,7 @@
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
+    "@types/node": "^11.13.14",
     "@chrisb-dev/tslint": "^1.0.1",
     "pre-commit": "^1.2.2",
     "tslint": "^5.14.0"
