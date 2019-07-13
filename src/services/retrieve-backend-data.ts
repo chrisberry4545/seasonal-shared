@@ -25,10 +25,17 @@ export const getAllSeasonsWithFood = (): Promise<IHydratedSeason[]> => {
 };
 
 export const getSeasonWithRecipes = (
-  seasonIndex: number
+  seasonIndex: number,
+  isVegetarian?: boolean,
+  isVegan?: boolean
 ): Promise<IHydratedSeason> => {
+  const query = [
+    isVegetarian && 'is-vegetarian',
+    isVegan && 'is-vegan'
+  ].filter(Boolean).join('&');
+  const queryString = query && `?${query}`;
   return fetch(
-      `${SEASON_WITH_RECIPES_URL}/${seasonIndex}`
+      `${SEASON_WITH_RECIPES_URL}/${seasonIndex}${queryString}`
   ).then((resp) => resp.json());
 };
 
