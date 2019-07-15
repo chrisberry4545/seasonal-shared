@@ -6,6 +6,15 @@ import {
 } from '././../config';
 import { IBaseSeason, IHydratedSeason, IHydratedFood } from '../interfaces';
 
+const getQueryString = (isVegetarian?: boolean, isVegan?: boolean) => {
+  const query = [
+    isVegetarian && 'is-vegetarian=true',
+    isVegan && 'is-vegan=true'
+  ].filter(Boolean).join('&');
+  const queryString = query && `?${query}`;
+  return queryString;
+};
+
 export const getCurrentSeasonIndex = (): number => new Date().getUTCMonth();
 
 export const getAllSeasons = (): Promise<IBaseSeason[]> => {
@@ -29,11 +38,7 @@ export const getSeasonWithRecipes = (
   isVegetarian?: boolean,
   isVegan?: boolean
 ): Promise<IHydratedSeason> => {
-  const query = [
-    isVegetarian && 'is-vegetarian',
-    isVegan && 'is-vegan'
-  ].filter(Boolean).join('&');
-  const queryString = query && `?${query}`;
+  const queryString = getQueryString(isVegetarian, isVegan);
   return fetch(
       `${SEASON_WITH_RECIPES_URL}/${seasonIndex}${queryString}`
   ).then((resp) => resp.json());
@@ -44,8 +49,11 @@ export const getAllSeasonsWithRecipes = (): Promise<IHydratedSeason[]> => {
 };
 
 export const getFoodDetailsData = (
-  foodId: string | null
+  foodId: string | null,
+  isVegetarian?: boolean,
+  isVegan?: boolean
 ): Promise<IHydratedFood> => {
-  return fetch(`${FOOD_DETAILS_URL}/${foodId}`)
+  const queryString = getQueryString(isVegetarian, isVegan);
+  return fetch(`${FOOD_DETAILS_URL}/${foodId}${queryString}`)
     .then((resp) => resp.json());
 };

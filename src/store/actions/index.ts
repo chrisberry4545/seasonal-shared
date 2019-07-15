@@ -8,6 +8,8 @@ export * from './current-food-details.actions';
 
 export * from './current-season.actions';
 
+export * from './settings.actions';
+
 export * from './init.actions';
 
 export * from './ui.actions';

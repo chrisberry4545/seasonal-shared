@@ -10,11 +10,13 @@ import {
 import {
   IAllSeasonDataWithFoodState
 } from './all-season-data-with-food-state.interface';
+import { ISettingsState } from './settings-state.interface';
 
 export interface IState {
   allBasicSeasonData: IAllBasicSeasonDataState;
   allSeasonsWithFoodData: IAllSeasonDataWithFoodState;
   currentFoodDetailsData: ICurrentFoodDetailsDataState;
   currentSeasonData: ICurrentSeasonDataState;
+  settings: ISettingsState;
   ui: IUiState;
 }

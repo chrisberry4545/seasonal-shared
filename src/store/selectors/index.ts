@@ -6,6 +6,8 @@ export * from './current-food-details.selectors';
 
 export * from './current-season.selectors';
 
+export * from './settings.selectors';
+
 export * from './ui.selectors';
 
 export * from './combined-selectors';

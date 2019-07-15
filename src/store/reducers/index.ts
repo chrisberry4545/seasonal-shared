@@ -10,6 +10,8 @@ import {
   allSeasonsReducer
 } from './all-seasons.reducer';
 
+import { settingsReducer } from './settings.reducer';
+
 import { uiReducer } from './ui.reducer';
 
 export const allReducers = {
@@ -17,5 +19,6 @@ export const allReducers = {
   allSeasonsWithFoodData: allSeasonsReducer,
   currentFoodDetailsData: currentFoodDetailsReducer,
   currentSeasonData: currentSeasonWithFoodReducer,
+  settings: settingsReducer,
   ui: uiReducer
 };
