@@ -20,14 +20,19 @@ export const selectAllSeasonsWithFoodAndSearchAppliedData = createSelector(
 
 export const selectAllSeasonsVisibleFoodData = createSelector(
   selectAllSeasonsWithFoodAndSearchAppliedData,
+  selectCurrentSearchTerm,
   selectNumberOfAllSeasonsInView,
   (
     seasonsWithSearchApplied,
+    searchTerm,
     numberOfSeasonsInView
   ): IHydratedSeason[] | undefined => (
     seasonsWithSearchApplied &&
-      seasonsWithSearchApplied.slice(0, numberOfSeasonsInView)
-        .filter(({ food }) => food && food.length > 0)
+      (
+        searchTerm
+          ? seasonsWithSearchApplied
+          : seasonsWithSearchApplied.slice(0, numberOfSeasonsInView)
+      ).filter(({ food }) => food && food.length > 0)
     )
 );
 
