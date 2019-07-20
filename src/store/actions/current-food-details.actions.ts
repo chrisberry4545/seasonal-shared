@@ -14,6 +14,16 @@ export function setCurrentFoodDetailsStart(
     type: SET_CURRENT_FOOD_DETAILS_START
   };
 }
+export const SET_CURRENT_FOOD_DETAILS_ON_DIET_CHANGE =
+  'SET_CURRENT_FOOD_DETAILS_ON_DIET_CHANGE';
+export function setCurrentFoodDetailsOnDietChange(
+  foodItemId?: string
+): ISetCurrentFoodDetailsStart {
+  return {
+    foodItemId,
+    type: SET_CURRENT_FOOD_DETAILS_ON_DIET_CHANGE
+  };
+}
 
 export interface ISetCurrentFoodDetailsSuccess extends Action {
   currentFoodDetailsData: IHydratedFood;

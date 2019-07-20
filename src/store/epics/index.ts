@@ -24,7 +24,8 @@ import {
 } from './all-seasons-with-recipes.epic';
 
 import {
-  getCurrentFoodDetailsEpic$
+  getCurrentFoodDetailsEpic$,
+  updateFoodDetailsOnDietTypeChangeEpic$
 } from './current-food-details.epics';
 
 export const rootEpics = [
@@ -37,7 +38,8 @@ export const rootEpics = [
   getAllBasicSeasonsEpic$,
   getAllSeasonsWithFood$,
   getAllSeasonsWithRecipes$,
-  getCurrentFoodDetailsEpic$
+  getCurrentFoodDetailsEpic$,
+  updateFoodDetailsOnDietTypeChangeEpic$
 ];
 
 export * from './seasonal-epic.type';

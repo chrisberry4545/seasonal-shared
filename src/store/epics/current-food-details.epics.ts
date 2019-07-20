@@ -1,4 +1,4 @@
-import { ofType, ActionsObservable } from 'redux-observable';
+import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 
 import {
   getFoodDetailsData
@@ -7,24 +7,60 @@ import {
 import {
   setCurrentFoodDetailsSuccess,
   IFoodItemClicked,
-  SET_CURRENT_FOOD_DETAILS_START
+  SET_CURRENT_FOOD_DETAILS_START,
+  SET_DIET_TYPE,
+  setCurrentFoodDetailsOnDietChange,
+  SET_CURRENT_FOOD_DETAILS_ON_DIET_CHANGE
 } from '../actions';
 
 import {
   map,
-  switchMap
+  switchMap,
+  withLatestFrom,
+  filter
 } from 'rxjs/operators';
 import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
+import { IState } from '../../interfaces';
+import { selectSettingsDietType, selectCurrentFoodDetailsId } from '../selectors';
+import { DIET_TYPE } from '../../enums';
 
-export const getCurrentFoodDetailsEpic$: SharedSeasonalEpic = (
-  actions$: ActionsObservable<Action>
+export const updateFoodDetailsOnDietTypeChangeEpic$: SharedSeasonalEpic = (
+  actions$: ActionsObservable<Action>,
+  state$: StateObservable<IState>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(SET_CURRENT_FOOD_DETAILS_START),
-    switchMap((action) => (
-      getFoodDetailsData((action as IFoodItemClicked).foodItemId)
+    ofType(SET_DIET_TYPE),
+    withLatestFrom(state$),
+    map(([, state]) => selectCurrentFoodDetailsId(state)),
+    filter((currentFoodDetailsId) => Boolean(currentFoodDetailsId)),
+    map((currentFoodDetailsId) => (
+      setCurrentFoodDetailsOnDietChange(currentFoodDetailsId))
+    )
+  )
+);
+
+export const getCurrentFoodDetailsEpic$: SharedSeasonalEpic = (
+  actions$: ActionsObservable<Action>,
+  state$: StateObservable<IState>
+): Observable<Action> => (
+  actions$.pipe(
+    ofType(
+      SET_CURRENT_FOOD_DETAILS_START,
+      SET_CURRENT_FOOD_DETAILS_ON_DIET_CHANGE
+    ),
+    withLatestFrom(state$),
+    map(([action, state]: [Action, IState]) => ({
+      dietType: selectSettingsDietType(state),
+      foodItemId: (action as IFoodItemClicked).foodItemId
+    })),
+    switchMap(({ dietType, foodItemId }) => (
+      getFoodDetailsData(
+        foodItemId,
+        dietType === DIET_TYPE.VEGETARIAN,
+        dietType === DIET_TYPE.VEGAN
+      )
     )),
     map((currentFoodData) => setCurrentFoodDetailsSuccess(currentFoodData))
   )

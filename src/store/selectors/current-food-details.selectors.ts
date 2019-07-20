@@ -21,6 +21,12 @@ export const selectCurrentFoodDetails = createSelector(
   (currentFoodDetails): IHydratedFood | undefined => currentFoodDetails.data
 );
 
+export const selectCurrentFoodDetailsId = createSelector(
+  selectCurrentFoodDetails,
+  (currentFoodDetails): string | undefined => currentFoodDetails &&
+    currentFoodDetails.id
+);
+
 export const selectCurrentFoodDetailsName = createSelector(
   selectCurrentFoodDetails,
   (currentFoodDetails): string | undefined => currentFoodDetails &&
