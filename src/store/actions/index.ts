@@ -12,4 +12,6 @@ export * from './settings.actions';
 
 export * from './init.actions';
 
+export * from './season-name.actions';
+
 export * from './ui.actions';

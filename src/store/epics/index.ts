@@ -27,6 +27,7 @@ import {
   getCurrentFoodDetailsEpic$,
   updateFoodDetailsOnDietTypeChangeEpic$
 } from './current-food-details.epics';
+import { setSeasonSelectedSeasonName$ } from './season-name.epics';
 
 export const rootEpics = [
   initAppEpic$,
@@ -39,7 +40,8 @@ export const rootEpics = [
   getAllSeasonsWithFood$,
   getAllSeasonsWithRecipes$,
   getCurrentFoodDetailsEpic$,
-  updateFoodDetailsOnDietTypeChangeEpic$
+  updateFoodDetailsOnDietTypeChangeEpic$,
+  setSeasonSelectedSeasonName$
 ];
 
 export * from './seasonal-epic.type';
