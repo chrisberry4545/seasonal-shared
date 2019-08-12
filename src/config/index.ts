@@ -12,3 +12,6 @@ export const SEASON_WITH_FOOD_URL =
 
 export const SEASON_WITH_RECIPES_URL =
   process.env.SEASON_WITH_RECIPES_URL || `${BACKEND_URL}/season-with-recipes`;
+
+export const COUNTRY_URL =
+  process.env.COUNTRY_URL || `${BACKEND_URL}/country`;
