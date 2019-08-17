@@ -13,7 +13,7 @@ const getQueryString = (
   const query = [
     isVegetarian && 'is-vegetarian=true',
     isVegan && 'is-vegan=true',
-    countryCode && `countryCode=${countryCode}`
+    countryCode && `country-code=${countryCode}`
   ].filter(Boolean).join('&');
   const queryString = query && `?${query}`;
   return queryString;

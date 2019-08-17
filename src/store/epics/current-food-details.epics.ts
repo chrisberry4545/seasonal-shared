@@ -23,7 +23,7 @@ import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 import { IState } from '../../interfaces';
-import { selectSettingsDietType, selectCurrentFoodDetailsId } from '../selectors';
+import { selectSettingsDietType, selectCurrentFoodDetailsId, selectSettingsRegionCode } from '../selectors';
 import { DIET_TYPE } from '../../enums';
 
 export const updateFoodDetailsOnDietTypeChangeEpic$: SharedSeasonalEpic = (
@@ -53,13 +53,15 @@ export const getCurrentFoodDetailsEpic$: SharedSeasonalEpic = (
     withLatestFrom(state$),
     map(([action, state]: [Action, IState]) => ({
       dietType: selectSettingsDietType(state),
-      foodItemId: (action as IFoodItemClicked).foodItemId
+      foodItemId: (action as IFoodItemClicked).foodItemId,
+      regionCode: selectSettingsRegionCode(state)
     })),
-    switchMap(({ dietType, foodItemId }) => (
+    switchMap(({ dietType, foodItemId, regionCode }) => (
       getFoodDetailsData(
         foodItemId,
         dietType === DIET_TYPE.VEGETARIAN,
-        dietType === DIET_TYPE.VEGAN
+        dietType === DIET_TYPE.VEGAN,
+        regionCode
       )
     )),
     map((currentFoodData) => setCurrentFoodDetailsSuccess(currentFoodData))

@@ -11,10 +11,12 @@ import {
   IAllSeasonDataWithFoodState
 } from './all-season-data-with-food-state.interface';
 import { ISettingsState } from './settings-state.interface';
+import { ICountryState } from './country-data-state.interface';
 
 export interface IState {
   allBasicSeasonData: IAllBasicSeasonDataState;
   allSeasonsWithFoodData: IAllSeasonDataWithFoodState;
+  countryData: ICountryState;
   currentFoodDetailsData: ICurrentFoodDetailsDataState;
   currentSeasonData: ICurrentSeasonDataState;
   settings: ISettingsState;
