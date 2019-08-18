@@ -62,10 +62,14 @@ export function uiReducer(
         isRegionMenuVisible: true
       };
     case SET_REGION:
-    case GO_BACK_FROM_REGION_SELECTION:
       return {
         ...state,
         isLocationSettingsPopupVisible: false,
+        isRegionMenuVisible: false
+      };
+    case GO_BACK_FROM_REGION_SELECTION:
+      return {
+        ...state,
         isRegionMenuVisible: false
       };
     case SHOW_LOCATION_SETTINGS_POPUP:

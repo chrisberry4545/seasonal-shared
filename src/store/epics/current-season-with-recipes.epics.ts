@@ -36,7 +36,6 @@ export const getCurrentSeasonWithRecipesStartEpic$: SharedSeasonalEpic = (
       SELECT_SEASON,
       INIT_SETTINGS,
       FOOD_DETAILS_SELECT_SEASON,
-      INIT_SETTINGS,
       SET_DIET_TYPE,
       SET_REGION
     ),

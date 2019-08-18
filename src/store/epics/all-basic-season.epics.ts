@@ -8,7 +8,8 @@ import {
   INIT_SETTINGS,
   SET_ALL_BASIC_SEASONS_START,
   setAllSeasonsStart,
-  setAllBasicSeasonsSuccess
+  setAllBasicSeasonsSuccess,
+  SET_REGION
 } from '../actions';
 
 import {
@@ -24,7 +25,10 @@ export const getAllBasicSeasonsStartEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(INIT_SETTINGS),
+    ofType(
+      INIT_SETTINGS,
+      SET_REGION
+    ),
     mapTo(setAllSeasonsStart())
   )
 );
