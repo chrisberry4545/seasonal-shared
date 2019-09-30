@@ -19,11 +19,6 @@ export const selectIsSearchBarVisible = createSelector(
   (uiState): boolean => uiState.isSearchBarVisible
 );
 
-export const selectIsRegionMenuVisible = createSelector(
-  selectUiState,
-  (uiState): boolean => uiState.isRegionMenuVisible
-);
-
 export const selectIsLocationSettingsPopupVisible = createSelector(
   selectUiState,
   (uiState): boolean => uiState.isLocationSettingsPopupVisible

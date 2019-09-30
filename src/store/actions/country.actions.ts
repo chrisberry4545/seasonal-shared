@@ -21,19 +21,6 @@ export function getCountriesSuccess(
   };
 }
 
-export interface ISetCountryAction extends Action {
-  countryId: string;
-}
-export const SET_COUNTRY = 'SET_COUNTRY';
-export function setCountry(
-  countryId: string
-): ISetCountryAction {
-  return {
-    countryId,
-    type: SET_COUNTRY
-  };
-}
-
 export interface ISetRegionAction extends Action {
   regionCode: string;
 }

@@ -107,13 +107,6 @@ export function foodDetailsSelectRecipe(
   };
 }
 
-export const GO_BACK_FROM_REGION_SELECTION = 'GO_BACK_FROM_REGION_SELECTION';
-export function goBackFromRegionSelection() {
-  return {
-    type: GO_BACK_FROM_REGION_SELECTION
-  };
-}
-
 export const SHOW_LOCATION_SETTINGS_POPUP = 'SHOW_LOCATION_SETTINGS_POPUP';
 export function showLocationPopup() {
   return {

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import {
-  IState, ICountryState, ICountry
+  IState, ICountryState, ICountry, IRegion
 } from '../../interfaces';
 
 const selectCountryState = (
@@ -15,4 +15,13 @@ export const selectAreCountriesLoading = createSelector(
 export const selectCountries = createSelector(
   selectCountryState,
   (countryState): ICountry[] | undefined => countryState.data
+);
+
+export const selectAllRegions = createSelector(
+  selectCountries,
+  (countries): IRegion[] | undefined => countries &&
+    countries.reduce((allRegions, nextCountry) => [
+      ...allRegions,
+      ...nextCountry.regions
+    ], [] as IRegion[])
 );

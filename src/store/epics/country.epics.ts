@@ -4,8 +4,6 @@ import {
   INIT_APP,
   getCountriesStart,
   getCountriesSuccess,
-  SET_COUNTRY,
-  setRegion,
   GET_COUNTRIES_SUCCESS,
   showLocationPopup
 } from '../actions';
@@ -21,7 +19,7 @@ import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 import { getCountries } from '../../services';
 import { IState } from '../../interfaces';
-import { selectCurrentCountry, selectSettingsRegionCode, selectCountries } from '../selectors';
+import { selectSettingsRegionCode, selectCountries } from '../selectors';
 
 export const getCountriesStart$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
@@ -59,20 +57,5 @@ export const showCountriesPopup$: SharedSeasonalEpic = (
       )
     )),
     mapTo(showLocationPopup())
-  )
-);
-
-export const onSelectOneRegionCountry$: SharedSeasonalEpic = (
-  actions$: ActionsObservable<Action>,
-  state$: StateObservable<IState>
-): Observable<Action> => (
-  actions$.pipe(
-    ofType(SET_COUNTRY),
-    withLatestFrom(state$),
-    map(([, state]) => selectCurrentCountry(state)),
-    filter((currentCountry) => Boolean(
-      currentCountry && currentCountry.regions.length === 1
-    )),
-    map((currentCountry) => setRegion(currentCountry!.regions[0].code))
   )
 );

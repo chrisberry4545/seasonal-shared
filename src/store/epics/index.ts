@@ -31,7 +31,6 @@ import { setSeasonSelectedSeasonName$ } from './season-name.epics';
 import {
   getCountriesStart$,
   getCountries$,
-  onSelectOneRegionCountry$,
   showCountriesPopup$
 } from './country.epics';
 
@@ -50,7 +49,6 @@ export const rootEpics = [
   setSeasonSelectedSeasonName$,
   getCountriesStart$,
   getCountries$,
-  onSelectOneRegionCountry$,
   showCountriesPopup$
 ];
 
