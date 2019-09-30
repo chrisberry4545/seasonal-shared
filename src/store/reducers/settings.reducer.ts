@@ -6,7 +6,8 @@ import {
   INIT_SETTINGS,
   IInitSettings,
   SET_REGION,
-  ISetRegionAction
+  ISetRegionAction,
+  SET_USER_REGION_DETECTED
 } from '../actions';
 import { DIET_TYPE } from '../../enums';
 
@@ -30,6 +31,7 @@ export function settingsReducer(
         ...state,
         dietType: (action as ISetDietType).dietType
       };
+    case SET_USER_REGION_DETECTED:
     case SET_REGION:
       return {
         ...state,

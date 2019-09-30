@@ -12,7 +12,8 @@ import {
   setCurrentSeasonWithRecipesSuccess,
   INIT_SETTINGS,
   SET_DIET_TYPE,
-  SET_REGION
+  SET_REGION,
+  SET_USER_REGION_DETECTED
 } from '../actions';
 
 import {
@@ -37,6 +38,7 @@ export const getCurrentSeasonWithRecipesStartEpic$: SharedSeasonalEpic = (
       INIT_SETTINGS,
       FOOD_DETAILS_SELECT_SEASON,
       SET_DIET_TYPE,
+      SET_USER_REGION_DETECTED,
       SET_REGION
     ),
     mapTo(setCurrentSeasonWithRecipesStart())

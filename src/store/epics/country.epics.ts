@@ -4,22 +4,26 @@ import {
   INIT_APP,
   getCountriesStart,
   getCountriesSuccess,
-  GET_COUNTRIES_SUCCESS,
-  showLocationPopup
+  ISetRegionAction,
+  USER_REGION_DETECTED,
+  setUserRegionDetected,
+  SET_USER_REGION_DETECTED,
+  hideRegionChangePrompt
 } from '../actions';
 import {
   map,
   switchMap,
   mapTo,
   withLatestFrom,
-  filter
+  filter,
+  delay
 } from 'rxjs/operators';
 import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 import { getCountries } from '../../services';
 import { IState } from '../../interfaces';
-import { selectSettingsRegionCode, selectCountries } from '../selectors';
+import { selectSettingsRegionCode } from '../selectors';
 
 export const getCountriesStart$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
@@ -40,22 +44,30 @@ export const getCountries$: SharedSeasonalEpic = (
   )
 );
 
-export const showCountriesPopup$: SharedSeasonalEpic = (
+export const promptCountryChangeOnNewDetected$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>,
   state$: StateObservable<IState>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(GET_COUNTRIES_SUCCESS),
+    ofType(USER_REGION_DETECTED),
     withLatestFrom(state$),
-    map(([, state]) => ({
-      countrys: selectCountries(state),
-      selectedRegionCode: selectSettingsRegionCode(state)
+    map(([action, state]) => ({
+      detectedRegion: (action as ISetRegionAction).regionCode,
+      settingsRegionCode: selectSettingsRegionCode(state)
     })),
-    filter(({ countrys, selectedRegionCode }) => (
-      !countrys || !selectedRegionCode || countrys.every((country) => (
-        country.regions.every((region) => region.code !== selectedRegionCode))
-      )
+    filter(({ detectedRegion, settingsRegionCode }) => (
+      detectedRegion !== settingsRegionCode
     )),
-    mapTo(showLocationPopup())
+    map(({ detectedRegion }) => setUserRegionDetected(detectedRegion))
+  )
+);
+
+export const hideRegionChangePrompt$: SharedSeasonalEpic = (
+  actions$: ActionsObservable<Action>
+): Observable<Action> => (
+  actions$.pipe(
+    ofType(SET_USER_REGION_DETECTED),
+    delay(5000),
+    mapTo(hideRegionChangePrompt())
   )
 );

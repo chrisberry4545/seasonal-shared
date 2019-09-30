@@ -31,7 +31,8 @@ import { setSeasonSelectedSeasonName$ } from './season-name.epics';
 import {
   getCountriesStart$,
   getCountries$,
-  showCountriesPopup$
+  promptCountryChangeOnNewDetected$,
+  hideRegionChangePrompt$
 } from './country.epics';
 
 export const rootEpics = [
@@ -49,7 +50,8 @@ export const rootEpics = [
   setSeasonSelectedSeasonName$,
   getCountriesStart$,
   getCountries$,
-  showCountriesPopup$
+  promptCountryChangeOnNewDetected$,
+  hideRegionChangePrompt$
 ];
 
 export * from './seasonal-epic.type';

@@ -120,3 +120,10 @@ export function closeLocationPopup() {
     type: CLOSE_LOCATION_SETTINGS_POPUP
   };
 }
+
+export const HIDE_REGION_CHANGE_PROMPT = 'HIDE_REGION_CHANGE_PROMPT';
+export function hideRegionChangePrompt() {
+  return {
+    type: HIDE_REGION_CHANGE_PROMPT
+  };
+}

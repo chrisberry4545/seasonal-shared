@@ -33,3 +33,23 @@ export function setRegion(
     type: SET_REGION
   };
 }
+
+export const USER_REGION_DETECTED = 'USER_REGION_DETECTED';
+export function userRegionDetected(
+  regionCode: string
+): ISetRegionAction {
+  return {
+    regionCode,
+    type: USER_REGION_DETECTED
+  };
+}
+
+export const SET_USER_REGION_DETECTED = 'SET_USER_REGION_DETECTED';
+export function setUserRegionDetected(
+  regionCode: string
+): ISetRegionAction {
+  return {
+    regionCode,
+    type: SET_USER_REGION_DETECTED
+  };
+}
