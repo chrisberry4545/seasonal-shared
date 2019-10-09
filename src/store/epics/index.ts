@@ -28,6 +28,12 @@ import {
   updateFoodDetailsOnDietTypeChangeEpic$
 } from './current-food-details.epics';
 import { setSeasonSelectedSeasonName$ } from './season-name.epics';
+import {
+  getCountriesStart$,
+  getCountries$,
+  promptCountryChangeOnNewDetected$,
+  hideRegionChangePrompt$
+} from './country.epics';
 
 export const rootEpics = [
   initAppEpic$,
@@ -41,7 +47,11 @@ export const rootEpics = [
   getAllSeasonsWithRecipes$,
   getCurrentFoodDetailsEpic$,
   updateFoodDetailsOnDietTypeChangeEpic$,
-  setSeasonSelectedSeasonName$
+  setSeasonSelectedSeasonName$,
+  getCountriesStart$,
+  getCountries$,
+  promptCountryChangeOnNewDetected$,
+  hideRegionChangePrompt$
 ];
 
 export * from './seasonal-epic.type';

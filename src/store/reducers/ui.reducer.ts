@@ -6,12 +6,19 @@ import {
   ISearchBarChanged,
   SHOW_SEARCH_BAR,
   HIDE_SEARCH_BAR,
-  GO_TO_ALL_SEASONS_VIEW
+  GO_TO_ALL_SEASONS_VIEW,
+  SET_REGION,
+  SHOW_LOCATION_SETTINGS_POPUP,
+  CLOSE_LOCATION_SETTINGS_POPUP,
+  SET_USER_REGION_DETECTED,
+  HIDE_REGION_CHANGE_PROMPT
 } from '../actions';
 import { IUiState } from '../../interfaces';
 import { Action } from 'redux';
 
 const getDefaultState = (): IUiState => ({
+  isCountryChangePromptVisible: false,
+  isLocationSettingsPopupVisible: false,
   isMenuOpen: false,
   isSearchBarVisible: false
 });
@@ -48,6 +55,31 @@ export function uiReducer(
         ...state,
         isSearchBarVisible: false,
         searchTerm: ''
+      };
+    case SET_REGION:
+      return {
+        ...state,
+        isLocationSettingsPopupVisible: false
+      };
+    case SET_USER_REGION_DETECTED:
+      return {
+        ...state,
+        isCountryChangePromptVisible: true
+      };
+    case HIDE_REGION_CHANGE_PROMPT:
+      return {
+        ...state,
+        isCountryChangePromptVisible: false
+      };
+    case SHOW_LOCATION_SETTINGS_POPUP:
+      return {
+        ...state,
+        isLocationSettingsPopupVisible: true
+      };
+    case CLOSE_LOCATION_SETTINGS_POPUP:
+      return {
+        ...state,
+        isLocationSettingsPopupVisible: false
       };
     default:
       return state;

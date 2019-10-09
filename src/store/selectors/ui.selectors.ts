@@ -18,3 +18,13 @@ export const selectIsSearchBarVisible = createSelector(
   selectUiState,
   (uiState): boolean => uiState.isSearchBarVisible
 );
+
+export const selectIsLocationSettingsPopupVisible = createSelector(
+  selectUiState,
+  (uiState): boolean => uiState.isLocationSettingsPopupVisible
+);
+
+export const selectIsCountryChangePromptVisible = createSelector(
+  selectUiState,
+  (uiState): boolean => uiState.isCountryChangePromptVisible
+);

@@ -5,14 +5,15 @@ import {
 } from '../../services';
 
 import {
-  INIT_APP,
   FOOD_DETAILS_SELECT_SEASON,
   SELECT_SEASON,
   setCurrentSeasonWithRecipesStart,
   SET_CURRENT_SEASON_WITH_RECIPES_START,
   setCurrentSeasonWithRecipesSuccess,
   INIT_SETTINGS,
-  SET_DIET_TYPE
+  SET_DIET_TYPE,
+  SET_REGION,
+  SET_USER_REGION_DETECTED
 } from '../actions';
 
 import {
@@ -25,7 +26,7 @@ import { Action } from 'redux';
 import { Observable } from 'rxjs';
 import { SharedSeasonalEpic } from './seasonal-epic.type';
 import { IState } from '../../interfaces';
-import { selectCurrentSeasonIndex, selectSettingsDietType } from '../selectors';
+import { selectCurrentSeasonIndex, selectSettingsDietType, selectSettingsRegionCode } from '../selectors';
 import { DIET_TYPE } from '../../enums';
 
 export const getCurrentSeasonWithRecipesStartEpic$: SharedSeasonalEpic = (
@@ -34,10 +35,11 @@ export const getCurrentSeasonWithRecipesStartEpic$: SharedSeasonalEpic = (
   actions$.pipe(
     ofType(
       SELECT_SEASON,
-      INIT_APP,
-      FOOD_DETAILS_SELECT_SEASON,
       INIT_SETTINGS,
-      SET_DIET_TYPE
+      FOOD_DETAILS_SELECT_SEASON,
+      SET_DIET_TYPE,
+      SET_USER_REGION_DETECTED,
+      SET_REGION
     ),
     mapTo(setCurrentSeasonWithRecipesStart())
   )
@@ -52,13 +54,15 @@ export const getCurrentSeasonWithRecipesEpic$: SharedSeasonalEpic = (
     withLatestFrom(state$),
     map(([, state]) => ({
       dietType: selectSettingsDietType(state),
+      regionCode: selectSettingsRegionCode(state),
       seasonIndex: selectCurrentSeasonIndex(state)
     })),
-    switchMap(({ seasonIndex, dietType }) => (
+    switchMap(({ seasonIndex, regionCode, dietType }) => (
       getSeasonWithRecipes(
         seasonIndex,
         dietType === DIET_TYPE.VEGETARIAN,
-        dietType === DIET_TYPE.VEGAN
+        dietType === DIET_TYPE.VEGAN,
+        regionCode
       )
     )),
     map((recipesData) => setCurrentSeasonWithRecipesSuccess(recipesData))

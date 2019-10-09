@@ -5,10 +5,11 @@ import {
 } from '../../services';
 
 import {
-  INIT_APP,
+  INIT_SETTINGS,
   SET_ALL_BASIC_SEASONS_START,
   setAllSeasonsStart,
-  setAllBasicSeasonsSuccess
+  setAllBasicSeasonsSuccess,
+  SET_REGION
 } from '../actions';
 
 import {
@@ -24,7 +25,10 @@ export const getAllBasicSeasonsStartEpic$: SharedSeasonalEpic = (
   actions$: ActionsObservable<Action>
 ): Observable<Action> => (
   actions$.pipe(
-    ofType(INIT_APP),
+    ofType(
+      INIT_SETTINGS,
+      SET_REGION
+    ),
     mapTo(setAllSeasonsStart())
   )
 );

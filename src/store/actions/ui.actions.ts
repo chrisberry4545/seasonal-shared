@@ -106,3 +106,24 @@ export function foodDetailsSelectRecipe(
     type: FOOD_DETAILS_SELECT_RECIPE
   };
 }
+
+export const SHOW_LOCATION_SETTINGS_POPUP = 'SHOW_LOCATION_SETTINGS_POPUP';
+export function showLocationPopup() {
+  return {
+    type: SHOW_LOCATION_SETTINGS_POPUP
+  };
+}
+
+export const CLOSE_LOCATION_SETTINGS_POPUP = 'CLOSE_LOCATION_SETTINGS_POPUP';
+export function closeLocationPopup() {
+  return {
+    type: CLOSE_LOCATION_SETTINGS_POPUP
+  };
+}
+
+export const HIDE_REGION_CHANGE_PROMPT = 'HIDE_REGION_CHANGE_PROMPT';
+export function hideRegionChangePrompt() {
+  return {
+    type: HIDE_REGION_CHANGE_PROMPT
+  };
+}
